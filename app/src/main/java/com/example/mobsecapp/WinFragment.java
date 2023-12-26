@@ -30,7 +30,9 @@ public class WinFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v){
         if (v.getId() == R.id.btnFinish){
             Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+            getActivity().finish();
         }
     }
 
