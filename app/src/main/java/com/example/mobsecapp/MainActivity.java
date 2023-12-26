@@ -19,18 +19,19 @@ public class MainActivity extends AppCompatActivity {
 
         Button okButton = findViewById(R.id.buttonOk);
         EditText usernameText = findViewById(R.id.editName);
-        // TODO: process password
+        EditText passwordText = findViewById(R.id.editPassword);
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = usernameText.getText().toString();
-                if(username.isEmpty()){
-                    Toast.makeText(MainActivity.this, "name is empty", Toast.LENGTH_SHORT).show();
+                String password = passwordText.getText().toString();
+                if(username.isEmpty() || password.isEmpty()){
+                    Toast.makeText(MainActivity.this, "text field is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent intent = new Intent(MainActivity.this, GameActivity.class);
                 intent.putExtra("username", username);
-                saveToPrefs(username);
+                saveToPrefs(username, password);
                 startActivity(intent);
             }
         };
@@ -38,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         okButton.setOnClickListener(onClickListener);
     }
 
-    void saveToPrefs(String username){
+    void saveToPrefs(String username, String password){
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        prefs.edit().putString("username", username).commit();
+        prefs.edit().putString("username", username).putString("password", password).commit();
     }
 }

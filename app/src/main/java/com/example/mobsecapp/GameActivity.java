@@ -38,14 +38,14 @@ public class GameActivity extends AppCompatActivity {
         if (score <= FAKE_LIMIT){
             tvScore.setText("Your score: " + score);
         }
-        else if (score > WIN_LIMIT){
-            // TODO: WinActivity
-            Toast.makeText(this, "game over", Toast.LENGTH_SHORT).show();
+        else if (score > WIN_LIMIT) {
             Intent intent = new Intent(this, WinActivity.class);
             String username = getIntent().getStringExtra("username");
             intent.putExtra("username", username);
             intent.putExtra("score", score);
             startActivity(intent);
+        } else{
+            Toast.makeText(this, "game over", Toast.LENGTH_SHORT).show();
         }
     }
 }

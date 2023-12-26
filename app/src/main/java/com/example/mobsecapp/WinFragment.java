@@ -1,5 +1,6 @@
 package com.example.mobsecapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link WinFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class WinFragment extends Fragment {
+public class WinFragment extends Fragment implements View.OnClickListener {
 
     private String username;
 
@@ -29,6 +27,14 @@ public class WinFragment extends Fragment {
     }
 
     @Override
+    public void onClick(View v){
+        if (v.getId() == R.id.btnFinish){
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -40,6 +46,13 @@ public class WinFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_win, container, false);
+        View view = inflater.inflate(R.layout.fragment_win, container, false);
+        TextView greeting = view.findViewById(R.id.tvWinName);
+        TextView win = view.findViewById(R.id.tvWin);
+        greeting.setText("Congratulations, " + username + "!");
+        win.setText("You won!");
+        Button winButton = view.findViewById(R.id.btnFinish);
+        winButton.setOnClickListener(this);
+        return view;
     }
 }
