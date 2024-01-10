@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="username_hint">Имя пользователя</string>
+    <string name="win_prompt">Победа!</string>
+    <string name="lose_prompt">Лох!</string>
+    <string name="password_hint">Пароль</string>
+    <string name="greeting">Добро пожаловать!</string>
+    <string name="congratulations">Поздравляем, %s!</string>
+    <string name="commiserations">Очень жаль, %s!</string>
+    <string name="finish_btn">Выйти</string>
+</resources>

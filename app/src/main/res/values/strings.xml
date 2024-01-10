@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Mobsecapp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name" translatable="false">Mobsecapp</string>
+    <string name="username_hint">Username</string>
+    <string name="win_prompt">You won!</string>
+    <string name="lose_prompt">You lost!</string>
+    <string name="password_hint">Password</string>
+    <string name="greeting">Welcome, player!</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="congratulations">Congratulations, %s!</string>
+    <string name="commiserations">Too bad, %s!</string>
+    <string name="finish_btn">Finish</string>
 </resources>

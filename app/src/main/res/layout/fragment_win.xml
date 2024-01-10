@@ -31,5 +31,5 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_margin="32dp"
-        android:text="Finish" />
+        android:text="@string/finish_btn" />
 </LinearLayout>

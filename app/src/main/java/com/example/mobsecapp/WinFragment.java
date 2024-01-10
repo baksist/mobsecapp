@@ -1,6 +1,7 @@
 package com.example.mobsecapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class WinFragment extends Fragment implements View.OnClickListener {
-
+public class WinFragment extends Fragment {
+    String WIN_NAME = "Admin";
     private String username;
 
     public WinFragment() {
@@ -26,15 +27,6 @@ public class WinFragment extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-    @Override
-    public void onClick(View v){
-        if (v.getId() == R.id.btnFinish){
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            getActivity().finish();
-        }
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,10 +43,23 @@ public class WinFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_win, container, false);
         TextView greeting = view.findViewById(R.id.tvWinName);
         TextView win = view.findViewById(R.id.tvWin);
-        greeting.setText("Congratulations, " + username + "!");
-        win.setText("You won!");
+        if (username.equals(WIN_NAME)){
+            greeting.setText(String.format(getString(R.string.congratulations), username));
+            win.setText(R.string.win_prompt);
+            win.setTextColor(Color.GREEN);
+        }
+        else {
+            greeting.setText(String.format(getString(R.string.commiserations), username));
+            win.setText(R.string.lose_prompt);
+            win.setTextColor(Color.RED);
+        }
         Button winButton = view.findViewById(R.id.btnFinish);
-        winButton.setOnClickListener(this);
+        winButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().finish();
+            }
+        });
         return view;
     }
 }
